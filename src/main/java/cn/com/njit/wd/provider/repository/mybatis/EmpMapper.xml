@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.njit.wd.provider.repository.mybatis.EmpMapper">
+    <sql id="emp_column_list">
+        id AS empId,
+        age AS empAge,
+        gender AS empGender,
+        name AS empName
+    </sql>
+    <insert id="save" parameterType="cn.com.njit.wd.api.dto.EmpDTO">
+        <selectKey keyProperty="empId" resultType="String" order="BEFORE">
+            SELECT replace(uuid(),'-','') FROM dual
+        </selectKey>
+        INSERT INTO emp
+        <trim prefix="(" suffix=")">
+                id,
+            <if test="empAge!=null and empAge!=''">
+                age,
+            </if>
+            <if test="empGender!=null and empGender=''">
+                gender,
+            </if>
+            <if test="empName!=null and empName = ''">
+                name
+            </if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")">
+                #{empId,jdbcType = VARCHAR},
+            <if test="empAge!=null and empAge!=''">
+                #{empAge,jdbcType = VARCHAR},
+            </if>
+            <if test="empGender!=null and empGender=''">
+                #{empGender,jdbcType = VARCHAR},
+            </if>
+            <if test="empName!=null and empName = ''">
+                #{empName,jdbcType = VARCHAR}
+            </if>
+        </trim>
+    </insert>
+    <select id="queryByName" parameterType="String" resultType="cn.com.njit.wd.api.dto.EmpDTO">
+        SELECT
+        <include refid="emp_column_list"/>
+        FROM emp
+        WHERE name=#{empName}
+    </select>
+</mapper>

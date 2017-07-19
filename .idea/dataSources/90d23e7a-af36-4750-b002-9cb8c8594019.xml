@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="MySQL - usdpsys@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="bookshop">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="db_user"/>
+    <schema id="4" parent="1" name="information_schema"/>
+    <schema id="5" parent="1" name="mlwl"/>
+    <schema id="6" parent="1" name="myshop"/>
+    <schema id="7" parent="1" name="mysql"/>
+    <schema id="8" parent="1" name="project"/>
+    <schema id="9" parent="1" name="test"/>
+    <schema id="10" parent="1" name="usdpsys"/>
+    <table id="11" parent="2" name="t_book"/>
+    <table id="12" parent="2" name="t_cart"/>
+    <table id="13" parent="2" name="t_notice"/>
+    <table id="14" parent="2" name="t_trade_info"/>
+    <table id="15" parent="2" name="t_user"/>
+    <column id="16" parent="11" name="BOOK_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR(40)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="17" parent="11" name="BOOK_NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR(100)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="18" parent="11" name="BOOK_PRICE">
+      <Position>3</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="19" parent="11" name="BOOK_NUM">
+      <Position>4</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="20" parent="11" name="BOOK_ACT">
+      <Position>5</Position>
+      <Comment>00-无活动，01-新品，02-促销，03-热卖</Comment>
+      <DataType>VARCHAR(2)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;00&apos;</DefaultExpression>
+    </column>
+    <column id="21" parent="11" name="BOOK_IMG">
+      <Position>6</Position>
+      <DataType>BLOB(65535)|-4</DataType>
+    </column>
+    <column id="22" parent="11" name="BOOK_DESC">
+      <Position>7</Position>
+      <DataType>VARCHAR(300)|12</DataType>
+      <DefaultExpression>&apos;暂无&apos;</DefaultExpression>
+    </column>
+    <column id="23" parent="11" name="BOOK_MORE_DESC">
+      <Position>8</Position>
+      <DataType>VARCHAR(1000)|12</DataType>
+      <DefaultExpression>&apos;暂无&apos;</DefaultExpression>
+    </column>
+    <column id="24" parent="11" name="BOOK_SPE_PRICE">
+      <Position>9</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+    </column>
+    <key id="25" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>BOOK_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="26" parent="12" name="CART_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR(40)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="27" parent="12" name="USER_ID">
+      <Position>2</Position>
+      <DataType>VARCHAR(40)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="28" parent="12" name="BOOK_ID">
+      <Position>3</Position>
+      <DataType>VARCHAR(40)|12</DataType>
+    </column>
+    <column id="29" parent="12" name="BOOK_NUM">
+      <Position>4</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <index id="30" parent="12" name="t_cart_t_book_BOOK_ID_fk">
+      <ColNames>BOOK_ID</ColNames>
+    </index>
+    <key id="31" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>CART_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="32" parent="12" name="t_cart_t_user_USER_ID_fk">
+      <ColNames>USER_ID</ColNames>
+      <RefSchemaName>bookshop</RefSchemaName>
+      <RefTableName>t_user</RefTableName>
+      <RefKeyName>PRIMARY</RefKeyName>
+      <RefColNames>USER_ID</RefColNames>
+    </foreign-key>
+    <column id="33" parent="13" name="notice_id">
+      <Position>1</Position>
+      <DataType>VARCHAR(40)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="34" parent="13" name="notice_title">
+      <Position>2</Position>
+      <DataType>VARCHAR(255)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="35" parent="13" name="notice_content">
+      <Position>3</Position>
+      <DataType>VARCHAR(500)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="36" parent="13" name="notice_time">
+      <Position>4</Position>
+      <DataType>VARCHAR(40)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="37" parent="13" name="user_id">
+      <Position>5</Position>
+      <Comment>创建者</Comment>
+      <DataType>VARCHAR(40)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="38" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>notice_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="39" parent="14" name="trade_id">
+      <Position>1</Position>
+      <DataType>VARCHAR(40)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="40" parent="14" name="user_id">
+      <Position>2</Position>
+      <DataType>VARCHAR(40)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="41" parent="14" name="trade_time">
+      <Position>3</Position>
+      <DataType>VARCHAR(50)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="42" parent="14" name="trade_money">
+      <Position>4</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="43" parent="14" name="trade_type">
+      <Position>5</Position>
+      <Comment>01-充值 02-扣减</Comment>
+      <DataType>VARCHAR(2)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <key id="44" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>trade_id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="45" parent="15" name="USER_ID">
+      <Position>1</Position>
+      <DataType>VARCHAR(40)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="46" parent="15" name="USER_NAME">
+      <Position>2</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="47" parent="15" name="USER_TYPE">
+      <Position>3</Position>
+      <DataType>VARCHAR(2)|12</DataType>
+      <DefaultExpression>&apos;01&apos;</DefaultExpression>
+    </column>
+    <column id="48" parent="15" name="USER_PASSWORD">
+      <Position>4</Position>
+      <DataType>VARCHAR(20)|12</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;&apos;</DefaultExpression>
+    </column>
+    <column id="49" parent="15" name="USER_MOBILE">
+      <Position>5</Position>
+      <DataType>VARCHAR(11)|12</DataType>
+    </column>
+    <column id="50" parent="15" name="USER_ADDR">
+      <Position>6</Position>
+      <DataType>VARCHAR(40)|12</DataType>
+    </column>
+    <column id="51" parent="15" name="USER_EMAIL">
+      <Position>7</Position>
+      <DataType>VARCHAR(40)|12</DataType>
+    </column>
+    <column id="52" parent="15" name="USER_BALANCE">
+      <Position>8</Position>
+      <DataType>VARCHAR(10)|12</DataType>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="53" parent="15" name="t_user_USER_NAME_uindex">
+      <ColNames>USER_NAME</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="54" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>USER_ID</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
